@@ -1,22 +1,27 @@
-# Random Password Generator
+# Random Password Manager
 
-A simple Python script that generates random passwords of any length.
+A command-line Python tool to generate, store, retrieve, and delete passwords locally using a JSON file.
 
 ## Features
 
-Generates passwords with uppercase letters, lowercase letters, numbers, and symbols.
+- Add passwords for any website or app
+- Auto-generate a strong password with guaranteed uppercase, lowercase, digits, and symbols
+- Or manually enter your own password (hidden input)
+- Retrieve saved passwords by site name
+- Delete saved passwords
+- All data stored locally in `passwords.json`
 
 ## Usage
 
 Run the script:
 
-python main.py
+```python main.py```
 
-Enter the desired password length when prompted. The script will generate and display a random password.
-
-Example:
-Enter random password length: 16
-Your random password is: aB3$xQ9@mL2&nP7!
+Choose from the menu:
+1. Add Password
+2. Get Password
+3. Delete Password
+4. Exit
 
 ## Requirements
 
@@ -24,4 +29,10 @@ Python 3.x
 
 ## How It Works
 
-The script uses the `random` module to select characters from a pool of uppercase letters, lowercase letters, numbers, and symbols. It repeats this process for the specified length to create the password.
+Passwords are stored in `passwords.json` as a dictionary keyed by site name.
+Generated passwords pull one guaranteed character from each of four groups then fill the remaining length randomly before shuffling.
+```
+
+---
+
+**Portfolio description:**

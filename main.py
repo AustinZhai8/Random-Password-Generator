@@ -8,15 +8,15 @@ FILE = "passwords.json"
 def loadData():
     if not os.path.exists(FILE):
         return {}
-    try:
-        with open(FILE) as f:
-            return json.load(f)
-    except:
-        return {}
+    f = open(FILE)
+    data = json.load(f)
+    f.close()
+    return data
 
 def saveData(data):
-    with open(FILE, "w") as f:
-        json.dump(data, f, indent=4)
+    f = open(FILE, "w")
+    json.dump(data, f, indent=4)
+    f.close()
 
 def generatePassword(length):
     
@@ -33,7 +33,9 @@ def generatePassword(length):
     ]
     
     allChars = possibleLower + possibleUpper + possibleDigits + possibleSpecial
-    remaining = [random.choice(allChars) for _ in range(length - 4)]
+    remaining = []
+    for i in range(length - 4):
+        remaining.append(random.choice(allChars))
     
     password = required + remaining
     random.shuffle(password)
